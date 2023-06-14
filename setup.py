@@ -180,5 +180,4 @@ if __name__ == '__main__':
             'optional': parse_requirements('requirements/optional.txt'),
         },
         ext_modules=[],
-        cmdclass={'build_ext': BuildExtension},
         zip_safe=False)
