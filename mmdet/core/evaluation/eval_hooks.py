@@ -50,6 +50,7 @@ class EvalHook(BaseEvalHook):
 
     def _do_evaluate(self, runner):
         """perform evaluation and save ckpt."""
+        print('DOING EVAL IN EVAL HOOK')
         if not self._should_evaluate(runner):
             return
 
@@ -58,6 +59,7 @@ class EvalHook(BaseEvalHook):
         # Changed results to self.results so that MMDetWandbHook can access
         # the evaluation results and log them to wandb.
         results = single_gpu_test(runner.model, self.dataloader, show=False)
+        print(results)
         self.latest_results = results
         runner.log_buffer.output['eval_iter_num'] = len(self.dataloader)
         key_score = self.evaluate(runner, results)
