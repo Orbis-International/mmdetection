@@ -311,6 +311,8 @@ class MMDetWandbHook(WandbLoggerHook):
     def _get_eval_results(self):
         """Get model evaluation results."""
         results = self.eval_hook.latest_results
+        print('eval')
+        print(results)
         eval_results = self.val_dataset.evaluate(
             results, logger='silent', **self.eval_hook.eval_kwargs)
         return eval_results
